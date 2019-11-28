@@ -2,7 +2,11 @@ package lab0;
 
 
 
-import javax.swing.*;   
+import javax.swing.*;
+
+import lab0.subject.ConcreteSubject;
+import lab0.subject.Subject;
+ 
 
 /**   
  * A basic JFC 1.1 based application.  
@@ -10,6 +14,7 @@ import javax.swing.*;
 public class Lab0 extends JFrame
 {
     private ObservableCounter observableCounter;
+    private Subject subject = new ConcreteSubject();
     
 	public Lab0()
 	{
@@ -33,9 +38,8 @@ public class Lab0 extends JFrame
 		OvalFrame ovalf = new OvalFrame();
 		ovalf.setVisible(true);
 		ovalf.setBounds(250, 400, 300, 200);
-		observableCounter  = new Counter();
-		observableCounter.observe(textf, rectf, ovalf);
-
+		observableCounter  = new Counter(textf, rectf, ovalf);
+		subject.addObserver(observableCounter);
 		SymWindow aSymWindow = new SymWindow();
 		this.addWindowListener(aSymWindow);
 		SymAction aSymAction = new SymAction();
@@ -57,6 +61,7 @@ public class Lab0 extends JFrame
 		} 
 		catch (Throwable t) {
 			//Ensure the application exits with an error condition.
+			System.out.println(t.getMessage());
 			System.exit(1);
 		}
 	}
@@ -110,12 +115,13 @@ public class Lab0 extends JFrame
 
 	void JButtonIncrease_actionPerformed(java.awt.event.ActionEvent event)
 	{
-		observableCounter.increment();	 
+		
+		subject.notify(OperationType.INCREMENT);
 	}
 
 	void JButtonDecrease_actionPerformed(java.awt.event.ActionEvent event)
 	{
-		observableCounter.decrement();
-			 
+	
+		subject.notify(OperationType.DECREMENT);	 
 	}
 }

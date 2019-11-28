@@ -6,20 +6,27 @@ public class Counter implements ObservableCounter
     private Frame rectframe;
     private Frame ovalframe;
     private int count;
-
-    public Counter(){
-        count = 0;
-    }
     
-
-	@Override
-	public void observe(TextFrame tf, RectFrame rf, OvalFrame of) {
+   
+    public Counter(TextFrame tf, RectFrame rf, OvalFrame of){
+        count = 0;
         textframe=tf;
         rectframe=rf;
         ovalframe=of;
-	}
+    }
     
-	@Override
+    
+    
+    @Override
+    public void update(OperationType operationType) {
+    	if(operationType == OperationType.DECREMENT) {
+    		decrement();
+    	}else {
+    		increment();
+    	}
+    	
+    }
+    
     public void increment(){
         count++;
         textframe.setCount(count);
@@ -27,7 +34,6 @@ public class Counter implements ObservableCounter
         ovalframe.setCount(count);
     }
     
-	@Override
     public void decrement(){
         if (count >0){
             count--;
@@ -36,6 +42,8 @@ public class Counter implements ObservableCounter
             ovalframe.setCount(count);
         }
     }
+
+	
 
 
 
