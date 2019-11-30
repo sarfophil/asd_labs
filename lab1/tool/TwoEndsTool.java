@@ -30,15 +30,15 @@ public class TwoEndsTool implements Tool {
 
 		case 1: // handle mouse pressed for line tool
 			twoEndShape = new LineShape();
-			twoEndShape.drawShape(event, canvas);
+			twoEndShape.drawOutline(event, canvas);
 			break;
 		case 2:// handle mouse pressed for rectangle tool
 			twoEndShape = new RectShape();
-			twoEndShape.drawShape(event, canvas);
+			twoEndShape.drawOutline(event, canvas);
 			break;
 		case 3:// handle mouse pressed for oval tool
 			twoEndShape = new OvalShape();
-			twoEndShape.drawShape(event, canvas);
+			twoEndShape.drawOutline(event, canvas);
 			break;
 		}
 	}
@@ -46,14 +46,17 @@ public class TwoEndsTool implements Tool {
 	@Override
 	public void mouseReleased(MouseEvent mouseEvent, ScribbleCanvas canvas) {
 		switch (toolType) {
-		case 1:
-
+		case 1: // handle mouse pressed for line tool
+			twoEndShape = new LineShape();
+			twoEndShape.drawOutline(mouseEvent, canvas);
 			break;
-		case 3:
-
+		case 2:// handle mouse pressed for rectangle tool
+			twoEndShape = new RectShape();
+			twoEndShape.drawOutline(mouseEvent, canvas);
 			break;
-		case 2:
-
+		case 3:// handle mouse pressed for oval tool
+			twoEndShape = new OvalShape();
+			twoEndShape.drawOutline(mouseEvent, canvas);
 			break;
 		}
 
@@ -62,14 +65,17 @@ public class TwoEndsTool implements Tool {
 	@Override
 	public void mouseDragged(MouseEvent mouseEvent, ScribbleCanvas canvas) {
 		switch (toolType) {
-		case 1:
-
+		case 1: // handle mouse pressed for line tool
+			twoEndShape = new LineShape();
+			twoEndShape.drawShape(mouseEvent, canvas);
 			break;
-		case 3:
-
+		case 2:// handle mouse pressed for rectangle tool
+			twoEndShape = new RectShape();
+			twoEndShape.drawShape(mouseEvent, canvas);
 			break;
-		case 2:
-
+		case 3:// handle mouse pressed for oval tool
+			twoEndShape = new OvalShape();
+			twoEndShape.drawShape(mouseEvent, canvas);
 			break;
 		}
 

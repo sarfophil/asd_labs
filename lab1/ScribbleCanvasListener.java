@@ -45,7 +45,6 @@ public class ScribbleCanvasListener
   } 
 
   public void mouseReleased(MouseEvent e) {
-    Point p = e.getPoint(); 
     switch (drawframe.getCurrentTool()){
         case 0: // handle mouse released for scribble tool
         	tool = new ScribbleTool();

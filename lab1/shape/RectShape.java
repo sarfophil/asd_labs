@@ -42,6 +42,7 @@ public class RectShape implements TwoEndShape{
 	public void drawOutline(MouseEvent event, ScribbleCanvas canvas) {
 		Point p = event.getPoint();
 		 canvas.setMouseButtonDown(false);
+		 onscreen = canvas.getGraphics();
          onscreen.setPaintMode();
          offscreen = canvas.getOffScreenGraphics(); 
          offscreen.drawRect(xStart, yStart, p.x-xStart+1, p.y-yStart+1); 
