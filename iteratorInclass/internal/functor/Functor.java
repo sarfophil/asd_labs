@@ -7,8 +7,8 @@ package iteratorInclass.internal.functor;
  * @author SARFO PHILIP
  *
  */
-public interface Functor<T> {	
-	public void compute(T value);
+@SuppressWarnings("hiding")
+public interface Functor<Integer> {	
+	public void compute(Integer value);
 	public int getValue();
-	public int doAll(T list);
 }

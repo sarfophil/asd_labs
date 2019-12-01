@@ -3,7 +3,7 @@ package iteratorInclass.externalselective;
 import java.util.Iterator;
 
 public class Client {
-	private static VectorCollection collection;
+	private static MyVectorClass collection;
 	public static void main(String[] args) {
 		collection = new MyVectorClass();
 		for(int i = 1; i < 20; i++)
@@ -22,7 +22,7 @@ public class Client {
 			}
 		};
 		
-		Iterator iterate = collection.iterator(predicate);
+		Iterator<Integer> iterate = collection.iterator(predicate);
 		
 		while(iterate.hasNext()) {
 			System.out.println(iterate.next());

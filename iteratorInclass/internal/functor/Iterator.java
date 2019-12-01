@@ -8,7 +8,5 @@ package iteratorInclass.internal.functor;
  *
  */
 public interface Iterator {
-	public Integer sum();
-	public Integer average();
-	
+	public Integer doAll(Functor<Integer> functor);
 }

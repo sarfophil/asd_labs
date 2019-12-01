@@ -1,23 +1,21 @@
 package iteratorInclass.externalselective;
 
 import java.util.Iterator;
-import java.util.List;
-import java.util.Vector;
 
 public class SelectiveIterator implements Iterator<Integer>{
 	
-	private List<Integer> iList;
+	private MyVectorClass iList;
 	private int currentPosition = 0;
 	
 	
-	
-	
-	public SelectiveIterator(Predicate predicate,List<Integer> vectorList) {
-		this.iList = vectorList;
-		List<Integer> tempList = new Vector<>();
+	public SelectiveIterator(Predicate predicate,MyVectorClass vList) {
+		iList = vList;
+		MyVectorClass tempList = new MyVectorClass();
 		for(Integer value : iList) {
-			if(predicate.execute(value))
-				tempList.add(value);		
+			if(predicate.execute(value)) {
+				tempList.add(value);	
+			}
+			
 		}
 		iList = tempList;
 	}

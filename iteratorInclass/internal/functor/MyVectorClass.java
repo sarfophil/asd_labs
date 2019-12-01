@@ -1,39 +1,39 @@
 package iteratorInclass.internal.functor;
 
-import java.util.List;
 import java.util.Vector;
 
-public class MyVectorClass implements Iterator {
-	
-	private List<Integer> data = new Vector<>();
-	
-	public static void main(String[] args) {
-		Iterator it = new MyVectorClass();
-		System.out.println("Total :"+it.sum());
-		System.out.println("Average:"+it.average());
-		
-	}
-	
-	public MyVectorClass() {
-		for(int i = 1; i<=10; i++) {
-			data.add(i*90);
-		}
-	}
 
-	@Override
+public class MyVectorClass extends Vector<Integer>  {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	
+	
+	
+	
 	public Integer sum() {
-		Functor<List<Integer>> functor = new SumFunctor();
-		return functor.doAll(data);
+		Functor<Integer> functor = new SumFunctor();
+		Iterator it = new IteratorImpl(this);
+		return it.doAll(functor);
 	}
 
-	@Override
 	public Integer average() {
-		Functor<List<Integer>> functor = new AverageFunctor();
-		return functor.doAll(data);
+		Functor<Integer> functor = new AverageFunctor();
+		Iterator it = new IteratorImpl(this);
+		return it.doAll(functor);
 	}
 	
 	
-	//
+	public Integer greaterThanTwo() {
+		Functor<Integer> functor = new SelectiveFunctor();
+		Iterator it = new IteratorImpl(this);
+		return it.doAll(functor);
+	}
+	
+	
 
 	
 	
