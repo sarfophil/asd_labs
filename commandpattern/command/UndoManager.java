@@ -12,10 +12,12 @@ import commandpattern.Lab4;
 public class UndoManager implements Command{
 	
 	private Lab4 frame;
+	CommandHistory history;
 	private PopReceiver receiver;
-	
 	public UndoManager(Lab4 context) {
 		frame = context;
+		receiver = new PopReceiver(frame);
+		history = UndoCommandHistory.getInstance();
 	}
 
 	@Override
@@ -23,7 +25,7 @@ public class UndoManager implements Command{
 		frame.getStack().pop();
 		receiver = new PopReceiver(frame);
 		receiver.action();
-		//history.getTop();
+		history.pop();
 	}
 
 }

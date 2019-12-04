@@ -18,18 +18,13 @@ public class RedoManager implements Command{
 	
 	public RedoManager(Lab4 context,String value) {
 		frame = context;
-		history = new CommandHistory();
+		history = RedoCommandHistory.getInstance();
 		this.value = value;
 	}
 
 	@Override
 	public void execute() {
-		if (!value.equals("")) {
-			frame.getStack().push(this.value);
-		}
-		history.addHistory(value);
-		receiver = new PopReceiver(frame);
-		receiver.action();
+		history.run();
 	}
 
 	

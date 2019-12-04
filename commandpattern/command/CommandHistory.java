@@ -3,23 +3,19 @@
  */
 package commandpattern.command;
 
-import java.util.Stack;
-
 /**
  * @author SARFO PHILIP
  *
  */
-public class CommandHistory {
+public abstract class CommandHistory {
+
+	abstract void run();
+
+	abstract void addHistory(Command command);
 	
-	private Stack<String> stack = new Stack<String>();
+
+	abstract void pop();
 	
 	
-	public void addHistory(String value) {
-		stack.add(value);
-	}
-	
-	public String getTop() {
-		return stack.pop();
-	}
 
 }

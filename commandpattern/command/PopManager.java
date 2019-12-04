@@ -2,14 +2,16 @@ package commandpattern.command;
 
 import commandpattern.Lab4;
 
-public class PopManager implements Command{
+public class PopManager implements Command,Cloneable{
 
 	private Lab4 frame;
-	private CommandHistory history;
+	private CommandHistory redoHistory;
+	private CommandHistory undoHistory;
 	private PopReceiver receiver;
 	public PopManager(Lab4 context) {
 		frame = context;
-		history = new CommandHistory();
+		redoHistory = RedoCommandHistory.getInstance();
+		undoHistory = UndoCommandHistory.getInstance();
 	}
 
 
@@ -18,7 +20,18 @@ public class PopManager implements Command{
 		frame.getStack().pop();
 		receiver = new PopReceiver(frame);
 		receiver.action();
-		history.getTop();
+		try {
+			redoHistory.addHistory((PopManager) this.clone());
+			undoHistory.addHistory((PopManager) this.clone());
+		} catch (CloneNotSupportedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		return (PopManager) super.clone();
 	}
 
 	
