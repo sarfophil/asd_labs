@@ -7,6 +7,8 @@ import commandpattern.command.PopManager;
 import commandpattern.command.PushManager;
 import commandpattern.command.RedoManager;
 import commandpattern.command.UndoManager;
+import commandpattern.mediator.UIDirector;
+import commandpattern.mediator.UIManagerImpl;
 
 /* ************************************
  *
@@ -18,6 +20,7 @@ public class Lab4 extends javax.swing.JFrame
 {
     private VStack stack = new VStack();  // the stack object
     private String pushstring="  "; // the string to push on the stack
+    private UIDirector uiManager;
     
 	public Lab4 ()    
 	{
@@ -26,6 +29,9 @@ public class Lab4 extends javax.swing.JFrame
 		getContentPane().setLayout(null);
 		setSize(480,300);
 		setVisible(false);
+		
+		//UI Mediator
+		uiManager = new UIManagerImpl();
 
 		JButtonPush.setText("Push");
 		getContentPane().add(JButtonPush);
