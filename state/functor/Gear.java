@@ -8,11 +8,11 @@ import state.statemodule.Shift3;
 import state.statemodule.Shift4;
 import state.statemodule.Shift5;
 
-public class Speed implements SpeedFunctor{
+public class Gear implements GearFunctor{
 	
 	private int speed = 0;
 	
-	public Speed(int speed) {
+	public Gear(int speed) {
 		this.speed = speed;
 	}
 
