@@ -11,12 +11,13 @@ public class Car{
     public int changeSpeed(int speed){
     	transmission = new Transmission() {
 			@Override
-			public GearState apply(int speed) {
-				return new Gear0(speed);
+			public int apply(int speed) {
+				GearState gear = new Gear0(speed);
+				return gear.shift();
 			}
 		};
 			
-	    return transmission.apply(speed).shift();
+	    return transmission.apply(speed);
     }
 }
     

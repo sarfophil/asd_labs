@@ -11,12 +11,12 @@ public class Gear2 implements GearState {
 
 	@Override
 	public int shift() {
-		if (speed > 20 && speed < 40) {
+		if(speed > 10 && speed <= 20) {
+			return 2;
+		}else {
 			nextGear = new Gear3(speed);
 			return nextGear.shift();
 		}
-
-		return 2;
 	}
 
 }

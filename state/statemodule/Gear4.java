@@ -11,13 +11,12 @@ public class Gear4 implements GearState {
 
 	@Override
 	public int shift() {
-		if (speed > 55) {
+		if (speed > 40 && speed < 60) {
+			return 4;
+		} else {
 			gearState = new Gear5(speed);
-
 			return gearState.shift();
 		}
-
-		return 4;
 	}
 
 }
