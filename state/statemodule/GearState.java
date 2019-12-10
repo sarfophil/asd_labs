@@ -1,5 +1,5 @@
 package state.statemodule;
 
-public interface CarState {
+public interface GearState {
 	public int shift();
 }

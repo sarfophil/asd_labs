@@ -130,6 +130,7 @@ public class Lab5 extends javax.swing.JFrame
         if (!source.getValueIsAdjusting()) {
 	        int mph = (int)source.getValue();
 	        int shift= mycar.changeSpeed(mph);
+	        System.out.println("Mph: "+mph);
 	        JTextFieldSpeed.setText(String.valueOf(mph));
 	        if (shift >0)
 	           JTextFieldShift.setText(String.valueOf(shift));

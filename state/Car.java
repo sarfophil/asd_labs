@@ -1,14 +1,22 @@
 package state;
 
-import state.functor.Gear;
-import state.functor.GearFunctor;
-import state.statemodule.CarState;
+import state.functor.Transmission;
+import state.statemodule.Gear0;
+import state.statemodule.GearState;
 
 public class Car{
+	
+	private Transmission transmission;
+	
     public int changeSpeed(int speed){
-	    GearFunctor gear = new Gear(speed);
-	    CarState state = gear.apply();
-	    return state.shift();
+    	transmission = new Transmission() {
+			@Override
+			public GearState apply(int speed) {
+				return new Gear0(speed);
+			}
+		};
+			
+	    return transmission.apply(speed).shift();
     }
 }
     
