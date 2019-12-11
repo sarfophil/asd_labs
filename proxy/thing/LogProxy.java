@@ -1,16 +1,15 @@
 package proxy.thing;
 
 import proxy.wrapperfunctor.LogFunctor;
-import proxy.wrapperfunctor.Proxy;
 
 public class LogProxy<T> implements Thing<T>{
 	
 	private Thing<T> thing;
 	private LogFunctor<T> log;
 	
-	public LogProxy(Thing<T> thing) {
+	public LogProxy(Thing<T> thing,LogFunctor<T> log) {
 		this.thing = thing;
-		log = new Proxy<>();
+		this.log = log;
 	}
 
 	@Override
